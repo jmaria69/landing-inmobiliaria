@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InmoTech | Automatiza tu Agencia Inmobiliaria</title>
+    <meta name="description" content="La plataforma todo-en-uno que cualifica leads con IA, genera tours inmersivos y elimina el papeleo de tu agencia inmobiliaria.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/style.css">
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header class="navbar glass-header">
+      <div class="container nav-content">
+        <div class="logo">Inmo<span class="text-accent">Tech</span></div>
+        <nav class="nav-links">
+          <a href="#soluciones">Soluciones</a>
+          <a href="#calculadora">ROI</a>
+          <a href="#tendencias">Plataforma</a>
+          <a href="dashboard.html" class="text-accent font-bold">⚙️ Live Dashboard</a>
+          <a href="#demo" class="btn btn-outline">Solicitar Demo</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+      <div class="hero-bg-glow"></div>
+      <div class="container hero-container">
+        <div class="hero-content fade-in">
+          <h1 class="hero-title">Deja de gestionar papeleo.<br>Empieza a <span class="text-accent">cerrar ventas.</span></h1>
+          <p class="hero-subtitle">El ecosistema inmobiliario inteligente que automatiza la cualificación de tus leads, genera experiencias inmersivas 360 y libera el 40% de tu tiempo comercial.</p>
+          <div class="hero-actions">
+            <a href="#demo" class="btn btn-primary">Empieza Hoy</a>
+            <a href="#soluciones" class="btn btn-text">Descubre cómo funciona &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pain vs Solutions Section -->
+    <section class="section" id="soluciones">
+      <div class="container">
+        <div class="section-header fade-in">
+          <h2>Tus dolores de cabeza, <span class="text-accent">resueltos.</span></h2>
+          <p>Conocemos el mercado. Sabemos que la competencia es feroz y el tiempo es tu recurso más valioso.</p>
+        </div>
+        
+        <div class="grid grid-3">
+          <!-- Card 1 -->
+          <div class="glass-card hover-flip fade-in-up">
+            <div class="card-front">
+              <div class="icon-box">❌</div>
+              <h3>Leads Fríos y No Cualificados</h3>
+              <p>Pierdes horas llamando a contactos que no tienen presupuesto real o intención de compra inmediata.</p>
+            </div>
+            <div class="card-back">
+              <div class="icon-box accent">✅</div>
+              <h3>Cualificación con IA</h3>
+              <p>Nuestro asistente conversacional 24/7 perfila a cada lead (presupuesto, urgencia) antes de pasarlo a tu equipo.</p>
+            </div>
+          </div>
+          
+          <!-- Card 2 -->
+          <div class="glass-card hover-flip fade-in-up" style="transition-delay: 100ms;">
+            <div class="card-front">
+              <div class="icon-box">❌</div>
+              <h3>Exceso de Back-Office</h3>
+              <p>Pasas más tiempo redactando contratos y actualizando hojas de Excel que mostrando propiedades.</p>
+            </div>
+            <div class="card-back">
+              <div class="icon-box accent">✅</div>
+              <h3>Gestión Automatizada</h3>
+              <p>Contratos digitales, flujos de trabajo sin fricción y un CRM integrado que hace el trabajo pesado por ti.</p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="glass-card hover-flip fade-in-up" style="transition-delay: 200ms;">
+            <div class="card-front">
+              <div class="icon-box">❌</div>
+              <h3>Falta de Diferenciación</h3>
+              <p>Listados estáticos que no destacan. Los compradores se olvidan de tus inmuebles rápidamente.</p>
+            </div>
+            <div class="card-back">
+              <div class="icon-box accent">✅</div>
+              <h3>Experiencias Inmersivas</h3>
+              <p>Tours 360 automatizados y diseño "Quiet Luxury" que proyectan exclusividad y confianza inmediata.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROI Calculator Section -->
+    <section class="section bg-secondary" id="calculadora">
+      <div class="container">
+        <div class="section-header fade-in">
+          <h2>Calcula tu <span class="text-accent">Ahorro de Tiempo</span></h2>
+          <p>Descubre cuántas horas al mes puedes recuperar utilizando InmoTech para automatizar tu agencia.</p>
+        </div>
+        
+        <div class="calculator-box glass-card fade-in-up">
+          <div class="calc-inputs">
+            <div class="input-group">
+              <label for="leads-range">Leads recibidos al mes: <span id="leads-val" class="font-bold">100</span></label>
+              <input type="range" id="leads-range" min="10" max="1000" step="10" value="100" class="slider">
+            </div>
+            <div class="input-group">
+              <label for="contracts-range">Contratos/Cierres al mes: <span id="contracts-val" class="font-bold">5</span></label>
+              <input type="range" id="contracts-range" min="1" max="50" step="1" value="5" class="slider">
+            </div>
+          </div>
+          <div class="calc-results">
+            <div class="result-item">
+              <h4>Horas de cualificación ahorradas</h4>
+              <p class="result-value text-accent" id="res-hours">25h</p>
+            </div>
+            <div class="result-item">
+              <h4>Horas de papeleo ahorradas</h4>
+              <p class="result-value text-accent" id="res-admin">15h</p>
+            </div>
+            <div class="result-total">
+              <h4>Tiempo total recuperado al mes</h4>
+              <p class="result-value-big" id="res-total">40 Horas</p>
+              <span class="badge badge-green">¡Una semana laboral completa!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section (Tendencias 2026 - Interactivo) -->
+    <section class="section" id="tendencias">
+      <div class="container">
+        <div class="feature-split">
+          <div class="feature-text fade-in-left">
+            <span class="badge">Tecnología 2026</span>
+            <h2>Hiper-personalización en <span class="text-accent">Tiempo Real</span></h2>
+            <p>Selecciona un perfil y mira cómo la Inteligencia Artificial adapta instantáneamente las propiedades mostradas a los gustos del usuario, maximizando la conversión.</p>
+            
+            <div class="sim-controls">
+              <button class="btn btn-sim active" data-profile="inversor">Perfil: Inversor</button>
+              <button class="btn btn-sim" data-profile="familia">Perfil: Familia</button>
+              <button class="btn btn-sim" data-profile="lujo">Perfil: Lujo</button>
+            </div>
+          </div>
+          <div class="feature-image fade-in-right">
+            <div class="mockup-window">
+              <div class="mockup-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span style="margin-left:auto; font-size: 0.8rem; color:#94a3b8; font-weight:600;">Recomendaciones IA</span>
+              </div>
+              <div class="mockup-body" id="sim-grid">
+                <!-- Se inyectan via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lead Capture Section -->
+    <section class="cta-section" id="demo">
+      <div class="container">
+        <div class="cta-box fade-in">
+          <div class="cta-content">
+            <h2>Eleva tu Agencia Inmobiliaria al siguiente nivel.</h2>
+            <p>Únete a las agencias top que ya están usando InmoTech para liderar su mercado local.</p>
+          </div>
+          <div class="cta-form-container">
+            <form id="lead-form" class="lead-form">
+              <div class="form-group">
+                <label for="name">Nombre Completo</label>
+                <input type="text" id="name" required placeholder="Ej. María López">
+              </div>
+              <div class="form-group">
+                <label for="email">Email Corporativo</label>
+                <input type="email" id="email" required placeholder="maria@tuagencia.com">
+              </div>
+              <div class="form-group">
+                <label for="agency">Nombre de la Agencia</label>
+                <input type="text" id="agency" required placeholder="Ej. Real Estate Elite">
+              </div>
+              <button type="submit" class="btn btn-primary w-full">Solicitar Acceso VIP</button>
+            </form>
+            <div id="form-success" class="form-success hidden">
+              <div class="icon-success">✓</div>
+              <h3>¡Solicitud Guardada Localmente!</h3>
+              <p>Puedes ver este lead en el panel de control de prueba.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-content">
+        <div class="footer-logo">Inmo<span class="text-accent">Tech</span></div>
+        <div class="footer-links">
+          <p>© 2026 InmoTech Platform. Todos los derechos reservados.</p>
+          <a href="dashboard.html" class="btn-text" style="font-size: 0.8rem; margin-top: 0.5rem; color: #475569; display: inline-block;">⚙️ Acceso CRM (Demo)</a>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

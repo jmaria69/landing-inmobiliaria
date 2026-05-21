@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard CRM | InmoTech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="./src/dashboard.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">Inmo<span class="text-accent">Tech</span></div>
+    <nav class="sidebar-nav">
+      <a href="#" class="active" data-tab="resumen">📊 Resumen</a>
+      <a href="#" data-tab="propiedades">🏢 Propiedades</a>
+      <a href="#" data-tab="leads">👥 Leads / CRM</a>
+      <a href="#" data-tab="finanzas">💰 Finanzas</a>
+      <a href="#" data-tab="ajustes">⚙️ Ajustes</a>
+    </nav>
+    <a href="index.html" class="btn-back">&larr; Volver a la Web</a>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <h1>Resumen del Portafolio</h1>
+      <div class="user-profile">
+        <span>Admin Agencia</span>
+        <div class="avatar">A</div>
+      </div>
+    </header>
+
+    <!-- TAB: Resumen -->
+    <div class="dashboard-grid tab-content active" id="tab-resumen">
+
+      <div class="card col-span-2">
+        <div class="card-header">
+          <h2>Resumen de Ingresos y Gastos</h2>
+          <span class="subtitle">Enero 2026 - Diciembre 2026</span>
+        </div>
+        <div class="revenue-layout">
+          <div class="chart-container"><canvas id="revenueChart"></canvas></div>
+          <div class="revenue-stats">
+            <div class="stat-box">
+              <span class="stat-value text-accent" id="kpi-ingresos">€ 0</span>
+              <span class="stat-label">Ingresos <span class="trend up">↗ 5.8%</span></span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-value text-purple" id="kpi-gastos">€ 0</span>
+              <span class="stat-label">Gastos <span class="trend down">↘ 2.4%</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-col gap-4">
+        <div class="card">
+          <div class="prop-header">
+            <div class="prop-icon">🏢</div>
+            <div>
+              <div class="prop-total" id="kpi-total">0</div>
+              <div class="prop-label">Propiedades Totales</div>
+            </div>
+          </div>
+          <div class="prop-stats-bar">
+            <div class="prop-stat bg-red-soft"><span class="num" id="kpi-vacantes">0</span> Vacantes</div>
+            <div class="prop-stat bg-accent"><span class="num" id="kpi-alquiladas">0</span> Alquiladas</div>
+            <div class="prop-stat bg-yellow"><span class="num" id="kpi-enventa">0</span> En Venta</div>
+          </div>
+        </div>
+        <div class="card flex-1">
+          <h3 class="card-title">Últimos 30 Días</h3>
+          <div class="invoice-stats">
+            <div>
+              <div class="stat-value text-accent" id="kpi-pagadas">€ 0</div>
+              <div class="stat-label">Facturas Cobradas</div>
+            </div>
+            <div class="divider"></div>
+            <div>
+              <div class="stat-value text-gray" id="kpi-pendiente">€ 0</div>
+              <div class="stat-label">Pendiente de Cobro</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h2>Últimos Contactos</h2></div>
+        <div class="tasks-list" id="dashboard-leads"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header center"><h2>Contratos por Expirar</h2></div>
+        <div class="doughnut-container">
+          <canvas id="leasesChart"></canvas>
+          <div class="doughnut-center"><span class="num">46</span><span class="lbl">Propiedades</span></div>
+        </div>
+        <div class="lease-legend">
+          <div><span class="dot" style="background:#2563eb;"></span> 8 (&lt; 30 días)</div>
+          <div><span class="dot" style="background:#1e3a8a;"></span> 16 (31-60 días)</div>
+          <div><span class="dot" style="background:#93c5fd;"></span> 22 (61-90 días)</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h2>Saldos Pendientes</h2><span class="subtitle">Todas las propiedades</span></div>
+        <div class="balance-total text-accent">€ 6,280</div>
+        <div class="mini-bar-chart">
+          <div class="bar h-40"></div><div class="bar h-60"></div><div class="bar h-30"></div><div class="bar h-80"></div><div class="bar h-50"></div><div class="bar h-100"></div><div class="bar h-70"></div>
+        </div>
+        <div class="property-highlight">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400&q=80" alt="Casa" class="prop-image">
+          <div class="prop-info">
+            <h4>Villa de Lujo 1A</h4>
+            <div class="tenant-info"><span class="avatar-small">MC</span> María C.</div>
+            <div class="debt text-accent">Deuda: € 350</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: Propiedades (JS lo rellena) -->
+    <div class="tab-content hidden" id="tab-propiedades"></div>
+
+    <!-- TAB: Leads / CRM (JS lo rellena) -->
+    <div class="tab-content hidden" id="tab-leads"></div>
+
+    <!-- TAB: Finanzas (JS lo rellena) -->
+    <div class="tab-content hidden" id="tab-finanzas"></div>
+
+    <!-- TAB: Ajustes (JS lo rellena) -->
+    <div class="tab-content hidden" id="tab-ajustes"></div>
+
+  </main>
+
+  <script type="module" src="/src/dashboard.js"></script>
+</body>
+</html>
