@@ -1,4 +1,5 @@
 import { propiedades, leads, transacciones, kpis } from './mockDb.js';
+import { getKnowledgeBase, addKnowledge, removeKnowledge } from './knowledgeBase.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   populateKPIs();
@@ -10,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderLeadsCRM();
   renderFinanzas();
   renderAjustes();
+  renderBotRAG();
 });
 
 // ============================================================
@@ -25,6 +27,7 @@ function initTabs() {
     propiedades: 'Directorio de Propiedades',
     leads: 'CRM — Gestión de Leads',
     finanzas: 'Panel Financiero',
+    bot: 'Base de Conocimiento RAG',
     ajustes: 'Ajustes de la Agencia'
   };
 
@@ -337,4 +340,70 @@ function renderAjustes() {
         </div>
       </div>
     </div>`;
+}
+
+// ============================================================
+// TAB: Bot RAG
+// ============================================================
+function renderBotRAG() {
+  const btnAdd = document.getElementById('btn-add-rag');
+  const inputKeywords = document.getElementById('rag-keywords');
+  const inputAnswer = document.getElementById('rag-answer');
+
+  if (btnAdd) {
+    btnAdd.addEventListener('click', () => {
+      const keywords = inputKeywords.value;
+      const answer = inputAnswer.value;
+
+      if (!keywords || !answer) {
+        alert('Por favor, rellena las palabras clave y la respuesta.');
+        return;
+      }
+
+      addKnowledge(keywords, answer);
+      inputKeywords.value = '';
+      inputAnswer.value = '';
+      updateRAGList();
+      alert('¡Nuevo conocimiento guardado! El bot ya lo ha aprendido.');
+    });
+  }
+
+  // Attach global remove function to window so inline onclick works
+  window.removeRAGFact = function(id) {
+    if (confirm('¿Seguro que quieres borrar este conocimiento?')) {
+      removeKnowledge(id);
+      updateRAGList();
+    }
+  };
+
+  updateRAGList();
+}
+
+function updateRAGList() {
+  const container = document.getElementById('rag-knowledge-list');
+  if (!container) return;
+
+  const kb = getKnowledgeBase();
+  container.innerHTML = '';
+
+  if (kb.length === 0) {
+    container.innerHTML = '<p style="color: var(--text-secondary);">No hay conocimientos guardados.</p>';
+    return;
+  }
+
+  // Ordenar los más nuevos primero
+  const sortedKb = [...kb].reverse();
+
+  sortedKb.forEach(fact => {
+    container.innerHTML += `
+      <div class="task-item" style="display:flex; justify-content:space-between; align-items:flex-start;">
+        <div style="flex: 1;">
+          <div class="task-title" style="margin-bottom: 0.5rem;">Respuesta: <span style="font-weight:400; font-size:0.95rem; color:var(--text-secondary);">${fact.answer}</span></div>
+          <div class="task-tags">
+            ${fact.keywords.map(k => `<span class="tag tag-progress">${k}</span>`).join('')}
+          </div>
+        </div>
+        <button onclick="removeRAGFact(${fact.id})" style="background:none; border:none; color:#ef4444; font-size:1.2rem; cursor:pointer;" title="Eliminar">&times;</button>
+      </div>`;
+  });
 }

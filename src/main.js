@@ -1,9 +1,12 @@
+import { initChatbot } from './chat.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initCalculator();
   initSimulator();
   initLeadForm();
   initAdminModal();
+  initChatbot();
 });
 
 // 1. Animaciones de Scroll con Intersection Observer
