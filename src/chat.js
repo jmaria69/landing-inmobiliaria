@@ -1,4 +1,5 @@
 import { getKnowledgeBase } from './knowledgeBase.js';
+import { getPropertyAnswer } from './propertyMatch.js';
 
 export function initChatbot() {
   const toggleBtn = document.getElementById('chat-toggle-btn');
@@ -93,13 +94,19 @@ export function initChatbot() {
   // RAG Simulado (Motor de Búsqueda de Conocimiento)
   function generateResponse(text) {
     const lowerText = text.toLowerCase();
-    
+
     // 1. Saludos por defecto
     if (lowerText.includes('hola') || lowerText.includes('buenos dias') || lowerText.includes('buenas tardes')) {
       return '¡Hola! Qué gusto saludarte. Soy el asistente de InmoTech. ¿Estás buscando comprar, vender o simplemente curioseando?';
     }
 
-    // 2. Recuperación (Retrieval) del Knowledge Base
+    // 2. Inventario real (ciudad / tipo de propiedad)
+    const propertyAnswer = getPropertyAnswer(lowerText);
+    if (propertyAnswer) {
+      return propertyAnswer;
+    }
+
+    // 3. Recuperación (Retrieval) del Knowledge Base
     const kb = getKnowledgeBase();
     let bestMatch = null;
     let maxMatches = 0;
@@ -119,7 +126,7 @@ export function initChatbot() {
       }
     }
 
-    // 3. Generación (Generation)
+    // 4. Generación (Generation)
     if (bestMatch && maxMatches > 0) {
       return bestMatch.answer;
     }
