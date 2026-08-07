@@ -4,20 +4,8 @@
 // Para producción en VPS, reemplazar con llamadas a una API REST.
 // ============================================================
 
-export const propiedades = [
-  { id: 1, nombre: "Ático Duplex Gran Vía", tipo: "Ático", ciudad: "Madrid", precio: 985000, alquiler: null, estado: "En Venta", habitaciones: 4, m2: 220, imagen: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80", inquilino: null, rentabilidad: 4.8 },
-  { id: 2, nombre: "Piso Modernista Eixample", tipo: "Piso", ciudad: "Barcelona", precio: null, alquiler: 2800, estado: "Alquilado", habitaciones: 3, m2: 145, imagen: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80", inquilino: "Carlos Vidal", rentabilidad: 5.2 },
-  { id: 3, nombre: "Villa con Piscina Marbella", tipo: "Villa", ciudad: "Marbella", precio: 2100000, alquiler: null, estado: "En Venta", habitaciones: 6, m2: 580, imagen: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80", inquilino: null, rentabilidad: 3.9 },
-  { id: 4, nombre: "Apartamento Nuevo Levante", tipo: "Apartamento", ciudad: "Valencia", precio: null, alquiler: 1100, estado: "Alquilado", habitaciones: 2, m2: 72, imagen: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80", inquilino: "Ana Martínez", rentabilidad: 5.8 },
-  { id: 5, nombre: "Loft Industrial Triana", tipo: "Loft", ciudad: "Sevilla", precio: 395000, alquiler: null, estado: "En Venta", habitaciones: 1, m2: 110, imagen: "https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=800&q=80", inquilino: null, rentabilidad: 6.1 },
-  { id: 6, nombre: "Casa Adosada Pozuelo", tipo: "Adosado", ciudad: "Madrid", precio: null, alquiler: 3200, estado: "Alquilado", habitaciones: 5, m2: 290, imagen: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80", inquilino: "Roberto Sáenz", rentabilidad: 4.4 },
-  { id: 7, nombre: "Estudio Céntrico Gótico", tipo: "Estudio", ciudad: "Barcelona", precio: 195000, alquiler: null, estado: "Vacante", habitaciones: 1, m2: 38, imagen: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80", inquilino: null, rentabilidad: 7.2 },
-  { id: 8, nombre: "Chalet Zona Norte", tipo: "Chalet", ciudad: "Bilbao", precio: null, alquiler: 2100, estado: "Alquilado", habitaciones: 4, m2: 210, imagen: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", inquilino: "Marta Eguren", rentabilidad: 4.9 },
-  { id: 9, nombre: "Piso Playa La Malagueta", tipo: "Piso", ciudad: "Málaga", precio: 520000, alquiler: null, estado: "En Venta", habitaciones: 3, m2: 105, imagen: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=800&q=80", inquilino: null, rentabilidad: 5.5 },
-  { id: 10, nombre: "Penthouse Torre Glòries", tipo: "Penthouse", ciudad: "Barcelona", precio: null, alquiler: 6500, estado: "Alquilado", habitaciones: 5, m2: 380, imagen: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80", inquilino: "Inversiones Grupo Alpha", rentabilidad: 3.7 },
-  { id: 11, nombre: "Casa Rural Sierra Norte", tipo: "Rústico", ciudad: "Guadalajara", precio: 280000, alquiler: null, estado: "En Venta", habitaciones: 4, m2: 190, imagen: "https://images.unsplash.com/photo-1448630360428-65456885c650?w=800&q=80", inquilino: null, rentabilidad: 6.8 },
-  { id: 12, nombre: "Oficina Azca Premium", tipo: "Comercial", ciudad: "Madrid", precio: null, alquiler: 4800, estado: "Alquilado", habitaciones: 0, m2: 320, imagen: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80", inquilino: "TechStart SL", rentabilidad: 5.1 },
-];
+import { propiedades } from './propertiesData.js';
+export { propiedades };
 
 export const leads = [
   { id: 1, nombre: "Laura Domínguez", email: "l.dominguez@agenciadomo.es", agencia: "Agencia Domo", telefono: "612 345 678", estado: "Caliente", fecha: "2026-05-20", origen: "Landing Page", notas: "Interesada en el módulo de captación IA." },
