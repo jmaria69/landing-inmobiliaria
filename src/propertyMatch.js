@@ -1,4 +1,4 @@
-import { propiedades } from './mockDb.js';
+import { propiedades } from './propertiesData.js';
 
 const TYPE_KEYWORDS = {
   piso: ['Piso', 'Apartamento', 'Ático', 'Estudio', 'Penthouse'],
