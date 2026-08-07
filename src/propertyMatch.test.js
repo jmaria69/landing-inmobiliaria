@@ -34,3 +34,16 @@ test('usa las propiedades reales de mockDb.js por defecto', () => {
   const answer = getPropertyAnswer('¿algo en Madrid?');
   assert.match(answer, /Madrid/);
 });
+
+test('reconoce ciudades acentuadas aunque el usuario escriba sin acentos', () => {
+  const answer = getPropertyAnswer('¿algo en malaga?');
+  assert.notEqual(answer, null);
+  assert.match(answer, /Málaga/);
+  assert.match(answer, /Piso Playa La Malagueta/);
+});
+
+test('resuelve formas cortas/coloquiales de ciudad vía alias (palma -> Palma de Mallorca)', () => {
+  const answer = getPropertyAnswer('¿tenéis algo en palma?');
+  assert.notEqual(answer, null);
+  assert.match(answer, /Palma de Mallorca/);
+});
